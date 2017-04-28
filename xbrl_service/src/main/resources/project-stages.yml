@@ -1,0 +1,21 @@
+metadata:
+  path: c:\projects\xbrl\xbrl_metadata\target\generated-resources\static\
+
+service:
+    xbrl:
+        service-name: "xbrl-service-swarm-1.0-SNAPSHOT"
+swarm:
+    port:
+        offset: 10
+    logger:
+        level: DEBUG
+
+---
+project:
+    stage: production
+service:
+    catalog:
+        service-name: "xbrl"
+swarm:
+    port:
+        offset: 100

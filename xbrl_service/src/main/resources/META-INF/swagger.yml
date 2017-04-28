@@ -1,0 +1,34 @@
+---
+swagger: "2.0"
+info:
+  description: "xbrl отчетность"
+  version: "1.0.0"
+  title: "xbrl отчетность"
+  termsOfService: "http://localhost/info/"
+  contact:
+    email: "andreykus@mail.ru"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost"
+basePath: "/api"
+tags:
+- name: "xbrl"
+  description: "Everything about your Report"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "store"
+  description: "Access to Petstore orders"
+- name: "user"
+  description: "Operations about user"
+  externalDocs:
+    description: "Find out more about our store"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /xbrl:
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

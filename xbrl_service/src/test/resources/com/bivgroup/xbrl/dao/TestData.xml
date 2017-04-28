@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <!--  Таксономия -->
+    <XBRL_TAXONOMY ID="1001" NAME="Тестовая Организация" FILE_NAME="c:\1222\Электронная база данных расширенной модели данных и таксономии\Бухгалтерская (финансовая) отчетность\Таксономия\www.cbr.ru\xbrl\2017-01-01\ifrs-ru\EP\EP_PURCB.xsd" />
+
+    <!--  Период -->
+    <XBRL_PERIOD ID="1001" NAME="Тестовый период" DATE_FROM="2017-09-12" DATE_TO="2017-09-12" DATE_ON="2017-09-12"/>
+
+    <!--  Параметр -->
+    <XBRL_PARAMS ID="1001" CONCEPT_ID="32820" CONCEPT_PREFIX="cbr-coa-dic" CONCEPT_NAME="EPS_49007_FinancialAssetsAtFairValueThroughProfitOrLossDesignatedAsUponInitialRecognition" RUS_NAME=" " TREE_LEVEL="0" ORDER_NUM="0" WEIGHT="0" CONCEPT_TYPE="2" CONCEPT_GROUP="0" BALANCE_TYPE="0" PERIOD_TYPE="1" TACONOMY_ID="1001" />
+    <XBRL_PARAMS ID="1002" CONCEPT_ID="17871" CONCEPT_PREFIX="ifrs-ru" CONCEPT_NAME="PolnoeNaimenovanieOrganizaczii" RUS_NAME="Полное наименование организации" TREE_LEVEL="0" ORDER_NUM="0" WEIGHT="0" CONCEPT_TYPE="0" CONCEPT_GROUP="0" BALANCE_TYPE="0" PERIOD_TYPE="1" TACONOMY_ID="1001" />
+    <XBRL_PARAMS ID="1003" CONCEPT_ID="17874" CONCEPT_PREFIX="ifrs-ru" CONCEPT_NAME="KodNekreditnojFinansovojOrganizacziiPoOKPO" RUS_NAME="Код некредитной финансовой организации по ОКПО" TREE_LEVEL="0" ORDER_NUM="0" WEIGHT="0" CONCEPT_TYPE="1" CONCEPT_GROUP="0" BALANCE_TYPE="0" PERIOD_TYPE="1" TACONOMY_ID="1001" />
+
+    <!--  Значение параметра -->
+    <XBRL_PARAMS_VALUES ID="1001" PARAM_ID="1001" PERIOD_ID="1001" TYPE="Integer"  VALUE_STRING="Double" VALUE_DUBLE="1" VALUE_INTEGER="1"/>
+    <XBRL_PARAMS_VALUES ID="1002" PARAM_ID="1002" PERIOD_ID="1001" TYPE="String"  VALUE_STRING="test" />
+    <XBRL_PARAMS_VALUES ID="1003" PARAM_ID="1003" PERIOD_ID="1001" TYPE="Integer" VALUE_INTEGER="1" />
+
+</dataset>

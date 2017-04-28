@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="xbrl_export:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="xbrl-service-swarm-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="xbrl_export:war exploded" />
+    </root>
+  </artifact>
+</component>

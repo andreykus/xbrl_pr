@@ -1,0 +1,310 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.bivgroup</groupId>
+        <artifactId>xbrl</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.bivgroup</groupId>
+    <artifactId>xbrl-service-swarm</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Service export XBRL report</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate-version>5.2.4.Final</hibernate-version>
+        <hibernate-tool-version>5.0.2.Final</hibernate-tool-version>
+        <java.version>1.8</java.version>
+        <version.wildfly.swarm>2017.3.3</version.wildfly.swarm>
+        <version.h2>1.4.187</version.h2>
+        <version.postgresql>9.4.1207</version.postgresql>
+        <version.mysql>5.1.38</version.mysql>
+        <version.oracle>12.1.0.2</version.oracle>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>wildfly-console</id>
+            <dependencies>
+                <!-- ADMIN CONSOLE -->
+                <dependency>
+                    <groupId>org.wildfly.swarm</groupId>
+                    <artifactId>management-console</artifactId>
+                    <version>${version.wildfly.swarm}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.wildfly.swarm</groupId>
+                    <artifactId>management</artifactId>
+                    <version>${version.wildfly.swarm}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+    <build>
+        <plugins>
+            <!-- версия jdk -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!--<plugin>-->
+            <!--<groupId>io.swagger</groupId>-->
+            <!--<artifactId>swagger-codegen-maven-plugin</artifactId>-->
+            <!--<version>2.2.2</version>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+            <!--<inputSpec>src/main/resources/api.yaml</inputSpec>-->
+            <!--<language>java</language>-->
+            <!--<configOptions>-->
+            <!--<sourceFolder>src/main/java</sourceFolder>-->
+            <!--</configOptions>-->
+            <!--<apiPackage>com.bivgroup.api.handler</apiPackage>-->
+            <!--<modelPackage>com.bivgroup.api.model</modelPackage>-->
+            <!--<invokerPackage>com.bivgroup.api.handler</invokerPackage>-->
+            <!--</configuration>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--</plugin>-->
+
+            <!-- тест -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <!-- сервис -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.wildfly.swarm</groupId>
+                <artifactId>wildfly-swarm-plugin</artifactId>
+                <version>${version.wildfly.swarm}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate-version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--common-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <!-- Services -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>1.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>cdi</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>jaxrs</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>undertow</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>org.jboss.spec.javax.servlet</groupId>-->
+        <!--<artifactId>jboss-servlet-api_3.1_spec</artifactId>-->
+        <!--<version>${version.wildfly.swarm}</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>jpa</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>datasources</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <!-- ADMIN CONSOLE -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>management-console</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>management</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+
+        <!-- log not console -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>logging</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>org.wildfly.swarm</groupId>-->
+        <!--<artifactId>ribbon</artifactId>-->
+        <!--<version>${version.wildfly.swarm}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>org.wildfly.swarm</groupId>-->
+        <!--<artifactId>netflix-rxjava</artifactId>-->
+        <!--<version>${version.wildfly.swarm}</version>-->
+        <!--</dependency>-->
+
+
+        <!-- Import the EJB API -->
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>ejb</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+
+        <!-- JSR-303 (Bean Validation) Implementation -->
+        <!-- Provides portable constraints such as @Email -->
+        <!-- Import the Hibernate Validator API -->
+        <!--<dependency>-->
+        <!--<groupId>org.wildfly.swarm</groupId>-->
+        <!--<artifactId>hibernate-validator</artifactId>-->
+        <!--<version>${version.wildfly.swarm}</version>-->
+        <!--</dependency>-->
+
+
+        <!-- Provided APIs -->
+        <!--<dependency>-->
+        <!--<groupId>com.netflix.hystrix</groupId>-->
+        <!--<artifactId>hystrix-core</artifactId>-->
+        <!--<version>1.4.3</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.netflix.hystrix</groupId>-->
+        <!--<artifactId>hystrix-metrics-event-stream</artifactId>-->
+        <!--<version>1.4.3</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>swagger</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.swarm</groupId>
+            <artifactId>swagger-webapp</artifactId>
+            <version>${version.wildfly.swarm}</version>
+        </dependency>
+        <!--Тестирование-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.1.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.5.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>2.5.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- type bd-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>${version.oracle}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${version.h2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${version.postgresql}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${version.mysql}</version>
+        </dependency>
+        <!--my lib-->
+        <dependency>
+            <groupId>com.bivgroup</groupId>
+            <artifactId>xbrl-lib</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>
+

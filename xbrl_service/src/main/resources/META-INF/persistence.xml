@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+    <!-- Generate by core-dictionary-plugin for module ${className} -->
+    <persistence-unit name="Xbrl">
+
+        <!--<jta-data-source>jboss/datasources/XBRL_DS</jta-data-source>-->
+        <!--<non-jta-data-source>jboss/datasources/XBRL_DS</non-jta-data-source>-->
+
+        <!--<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>-->
+
+
+               <!-- Configuring class Entity -->
+
+
+                            <class>com.bivgroup.xbrl.entity.XbrlParam</class>
+                            <class>com.bivgroup.xbrl.entity.XbrlParamValue</class>
+                            <class>com.bivgroup.xbrl.entity.XbrlParamValueString</class>
+
+                            <class>com.bivgroup.xbrl.entity.PrepareProcessor</class>
+
+        <properties>
+            <!-- test conn -->
+                <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+                <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+                <property name="hibernate.connection.url" value="jdbc:h2:file:C:/PILOT/demo;MV_STORE=FALSE;MVCC=FALSE"/>
+                <property name="hibernate.connection.username" value="sa"/>
+
+
+            <!-- Hibernate properties -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+            <!-- Configuring inner hbm.xml-->
+            
+
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="persistenceUnit"/>
+
+</persistence>

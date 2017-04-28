@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbrl xmlns="http://www.xbrl.org/2003/instance"
+    xmlns:acme="http://example.com/acme/results/2003-07-01"
+    xmlns:iso4217="http://www.xbrl.org/2003/iso4217"
+    xmlns:link="http://www.xbrl.org/2003/linkbase"
+    xmlns:xbrli="http://www.xbrl.org/2003/instance"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://example.com/acme/results/2003-07-01 ../../../../../projects/xbrl/ubmatrix/xbrlfiles/acme/acme.xsd">
+    
+	<!-- TAXONOMIA DEFINED -->
+	<link:schemaRef
+        xlink:href="../../../../../projects/xbrl/ubmatrix/xbrlfiles/acme/acme.xsd" xlink:type="simple"/>
+    
+	<!-- CONTEXT DEFINED -->
+	<context id="c3">
+        <entity>
+            <identifier scheme="http://example.com/acme">Acme</identifier>
+        </entity>
+        <period>
+            <forever/>
+        </period>
+    </context>
+    <context id="c2">
+        <entity>
+            <identifier scheme="http://example.com/acme">Acme</identifier>
+        </entity>
+        <period>
+            <instant>2004-11-18</instant>
+        </period>
+    </context>
+	
+	
+    <context id="c1Asia">
+        <entity>
+            <identifier scheme="http://example.com/acme/results">Acme</identifier>
+        </entity>
+        <period>
+            <startDate>2004-03-31</startDate>
+            <endDate>2005-03-30</endDate>
+        </period>
+    </context>
+	
+    <context id="c1US">
+        <entity>
+            <identifier scheme="http://example.com/acme/results-us">Acme-US</identifier>
+        </entity>
+        <period>
+            <startDate>2004-03-31</startDate>
+            <endDate>2005-03-30</endDate>
+        </period>
+    </context>
+    <context id="c1UK">
+        <entity>
+            <identifier scheme="http://example.com/acme/results">Acme</identifier>
+        </entity>
+        <period>
+            <startDate>2004-03-31</startDate>
+            <endDate>2005-03-30</endDate>
+        </period>
+    </context>
+   
+   <!-- UNIT DIMENSION DEFINED -->
+    <unit id="u4">
+        <divide>
+            <unitNumerator>
+                <measure>iso4217:USD</measure>
+            </unitNumerator>
+            <unitDenominator>
+                <measure>iso4217:GBP</measure>
+            </unitDenominator>
+        </divide>
+    </unit>	
+    <unit id="u3" xmlns:iso="http://www.xbrl.org/2003/iso4217">
+        <measure>iso:USD</measure>
+    </unit>
+    <unit id="u2" xmlns:iso="http://www.xbrl.org/2003/iso4217">
+        <measure>iso:GBP</measure>
+    </unit>
+    <unit id="u1">
+        <measure>iso4217:GBP</measure>
+    </unit>
+	
+	
+	<!-- FACT ELEMENT DEFINED -->
+    <acme:additionalInformation>
+        <acme:title contextRef="c2">Acme results for the third quarter 2002</acme:title>
+        <acme:author contextRef="c2">John Smith</acme:author>
+        <acme:description contextRef="c2">Acme provisional results for the third quarter of 2002</acme:description>
+        <acme:companyDetails>
+            <acme:companyName contextRef="c2">Acme</acme:companyName>
+            <acme:companyAddress>
+                <acme:addressDescription contextRef="c2">Acme Head Office</acme:addressDescription>
+                <acme:addressLine1 contextRef="c2">1 Example Street</acme:addressLine1>
+                <acme:addressTown contextRef="c2">Back Of Beyond</acme:addressTown>
+                <acme:addressPostCode contextRef="c2">55555</acme:addressPostCode>
+                <acme:addressCountry contextRef="c2">ExampleLand</acme:addressCountry>
+            </acme:companyAddress>
+			<acme:companyWebsite>
+                <acme:websiteDescription contextRef="c2">Main Website</acme:websiteDescription>
+                <acme:websiteURL contextRef="c2">http://www.xbrl.org/2003/role/link</acme:websiteURL>
+            </acme:companyWebsite>
+        </acme:companyDetails>
+    </acme:additionalInformation>
+	
+	
+    <acme:stockValue contextRef="c1" id="acme_stockValue" unitRef="u1">
+        <numerator>2</numerator>
+        <denominator>5</denominator>
+    </acme:stockValue>
+	
+    <acme:netProfit contextRef="c1" id="acme_netProfit" precision="5" unitRef="u1">2699810</acme:netProfit>
+	
+    <acme:taxation contextRef="c1" id="acme_taxation" precision="5" unitRef="u1">1113760</acme:taxation>
+	
+    <acme:grossProfit contextRef="c1" id="acme_grossProfitCosts" precision="5" unitRef="u1">2784400</acme:grossProfit>
+	
+    <acme:expenditureByTypeOperatingCosts contextRef="c1" id="acme_expenditureByTypeOperatingCosts" precision="5" unitRef="u1">1400500</acme:expenditureByTypeOperatingCosts>
+    <acme:expenditureByTypeMarketing contextRef="c1"  id="acme_expenditureByTypeMarketing" precision="5" unitRef="u1">679800</acme:expenditureByTypeMarketing>
+    <acme:expenditureByTypeOfficeSpaceAcquisition contextRef="c1"
+        id="acme_expenditureByTypeOfficeSpaceAcquisition" precision="5" unitRef="u1">370000</acme:expenditureByTypeOfficeSpaceAcquisition>
+    <acme:expenditureByType contextRef="c1" id="acme_expenditureByType"
+        precision="5" unitRef="u1">510200</acme:expenditureByType>
+    <acme:totalExpenditure contextRef="c1" id="acme_totalExpenditure"
+        precision="5" unitRef="u1">2960521</acme:totalExpenditure>
+    <acme:revenueByGeographicSegment contextRef="c1Asia"
+        id="acme_revenueByGeographicSegment_4" precision="5" unitRef="u1">580700</acme:revenueByGeographicSegment>
+    <acme:revenueByGeographicSegment contextRef="c1US"
+        id="acme_revenueByGeographicSegment_2" precision="5" unitRef="u1">2120000</acme:revenueByGeographicSegment>
+    <acme:revenueByGeographicSegment contextRef="c1UK"
+        id="acme_revenueByGeographicSegment_1" precision="5" unitRef="u1">2534000</acme:revenueByGeographicSegment>
+    <acme:revenueByProductTypeSoftware contextRef="c1" decimals="-2"
+        id="acme_revenueByProductTypeSoftware" unitRef="u1">1489700</acme:revenueByProductTypeSoftware>
+    <acme:revenueByProductTypeOfficeSupplies contextRef="c1"
+        id="acme_revenueByProductTypeOfficeSupplies" precision="5" unitRef="u1">2500000</acme:revenueByProductTypeOfficeSupplies>
+    <acme:revenueByProductTypeMedia contextRef="c1"
+        id="acme_revenueByProductTypeMedia" precision="5" unitRef="u1">1245000</acme:revenueByProductTypeMedia>
+    <acme:nillableConcept contextRef="c3"/>
+    <acme:totalRevenue contextRef="c3" decimals="2" unitRef="u1">9832000</acme:totalRevenue>
+    <acme:totalRevenue contextRef="c1" precision="INF" unitRef="u1">3989700</acme:totalRevenue>
+</xbrl>
+
+<!-- The contents of this file are subject to the BIV License Version 1.0 (the "License"); 
+	you may not use this file except in compliance with the License. 
+	Software distributed under the License is distributed on an "AS IS" basis,
+	WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+	Copyright (c) UBmatrix, Inc., 2017-?.  
+	All Rights Reserved.
+-->

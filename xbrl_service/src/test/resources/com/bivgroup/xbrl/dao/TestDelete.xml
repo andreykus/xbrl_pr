@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dataset>
+    <!-- Удалим все объекты -->
+
+    <XBRL_PARAMS_VALUES/>
+    <XBRL_PARAMS/>
+    <XBRL_PERIOD/>
+    <XBRL_TAXONOMY/>
+
+
+</dataset>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.bivgroup</groupId>
+        <artifactId>xbrl</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.bivgroup</groupId>
+    <artifactId>xbrl-lib</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>library work XBRL</name>
+    <description>A simple generator XBRL</description>
+
+    <developers>
+        <developer>
+            <id>andreykus</id>
+            <name>Andrey Kustov</name>
+            <email>andreykus@mai.ru</email>
+            <roles>
+                <role>designer</role>
+                <role>developer</role>
+                <role>tester</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <cdi.version>1.2</cdi.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java/com/bivgroup/xbrl/template</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- версия jdk -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>ubmatrix</groupId>-->
+            <!--<artifactId>XPE_SDK</artifactId>-->
+            <!--<version>1.0-SNAPSHOT</version>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.20</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>${cdi.version}</version>
+        </dependency>
+
+        <!--Логирование-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <!--Тестирование-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Excel-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>3.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>3.15</version>
+        </dependency>
+
+        <!--xml-->
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.9.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--xwand-->
+        <dependency>
+            <groupId>xwand</groupId>
+            <artifactId>xwand</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>c:/ISXWand/XWand-tk/tools/xbrl21/lib/xwand.jar</systemPath>
+        </dependency>
+        <!--xwand-xbrldimensions-->
+        <dependency>
+            <groupId>xwand</groupId>
+            <artifactId>xwanddim</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>c:/ISXWand/XWand-tk/tools/xbrl21/lib/xbrldimensions.jar</systemPath>
+        </dependency>
+
+        <!--xwand-tool-->
+        <dependency>
+            <groupId>xwand</groupId>
+            <artifactId>xwandtool</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>c:/ISXWand/XWand-tk/tools/xbrl21/lib/tool-common.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+</project>

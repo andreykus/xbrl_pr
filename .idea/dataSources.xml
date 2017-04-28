@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="3621740843">
+    <data-source source="LOCAL" name="SQL Server -" uuid="71825282-5f8b-414c-883f-91f24976b1d5">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://192.168.1.26:1433;DatabaseName=CSSMProd</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="H2 - demo;MV_STORE=FALSE;MVCC=FALSE" uuid="cff2f48e-d940-4cf5-8c60-be32933de33e">
+      <driver-ref>h2.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:file:$PROJECT_DIR$/../core/core-dictionary/demo;MV_STORE=FALSE;MVCC=FALSE</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - jira@192.168.100.209" uuid="c8a11e68-6677-4fbc-b0f8-43c0fbe83acc">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://192.168.100.209:5432/jira</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - confluence@192.168.100.209" uuid="d027d5e3-b3a0-400c-9a21-b2e7f5d576ca">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://192.168.100.209:5432/confluence</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

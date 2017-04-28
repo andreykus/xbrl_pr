@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BitbucketIssueService">
+    <option name="team" value="XBRL" />
+    <option name="repository" value="xbrl" />
+    <option name="userId" value="andreykus" />
+    <option name="password" value="1972@vasilisa" />
+  </component>
+</project>
