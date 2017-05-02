@@ -25,6 +25,10 @@ public class RESTDateParam {
         return date;
     }
 
+    /**
+     * CONVERT TO STRING
+     * @return - string
+     */
     @Override
     public String toString() {
         if ( date != null ) {

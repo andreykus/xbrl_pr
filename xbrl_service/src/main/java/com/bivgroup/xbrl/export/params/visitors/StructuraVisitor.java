@@ -6,6 +6,7 @@ import com.bivgroup.xbrl.dao.Dao;
 import java.util.Date;
 
 /**
+ *
  * Created by andreykus on 18.09.2016.
  */
 public interface StructuraVisitor<E> {

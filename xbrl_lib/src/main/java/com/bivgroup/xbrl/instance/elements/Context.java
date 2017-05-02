@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
+ * inner generate context xbrl document
  * Created by andreykus on 20.03.2017.
  */
 public class Context {

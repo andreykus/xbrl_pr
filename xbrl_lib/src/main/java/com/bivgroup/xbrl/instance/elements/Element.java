@@ -6,6 +6,7 @@ import com.bivgroup.xbrl.instance.elements.enums.Measurement;
 import java.util.UUID;
 
 /**
+ * inner generate fact value element xbrl document
  * Created by andreykus on 20.03.2017.
  */
 public class Element {

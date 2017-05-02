@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * inner generator xbrl document
  * Created by bush on 21.03.2017.
  */
 public class InstanceXbrl {
