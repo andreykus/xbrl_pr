@@ -78,6 +78,11 @@ public class CreatorXbrlXWand implements Creator {
         this.initializeProcessor(this.xbrlProcessor);
     }
 
+    /**
+     * init param processor
+     *
+     * @param xbrlProc
+     */
     public void initializeProcessor(XBRLProcessor xbrlProc) {
         //Specifies a unique error handler for the XBRL processor.
         //TODO: xbrlProcessor.setErrorHandler(new XbrlXwandErrorHandler());
@@ -86,7 +91,7 @@ public class CreatorXbrlXWand implements Creator {
     }
 
     /**
-     * crate instance report
+     * Crate instance report
      *
      * @param params - in params (xbrl object)
      * @return - report
@@ -100,7 +105,7 @@ public class CreatorXbrlXWand implements Creator {
     }
 
     /**
-     * save xbrl to out object
+     * Save xbrl to out object
      *
      * @param xbrlDoc - instance xbrl
      * @throws Exception
@@ -114,8 +119,13 @@ public class CreatorXbrlXWand implements Creator {
     }
 
 
-
-
+    /**
+     * Get all contexts by hyperCube axis
+     *
+     * @param xbrl - instance xbrl
+     * @return - list context
+     * @throws InstanceXbrlException - exception
+     */
     public List getContexts(Object xbrl) throws InstanceXbrlException {
         if (taxonomy == null) {
             loadTaxonomy(((InstanceXbrl) xbrl).getPathTaxonomy());

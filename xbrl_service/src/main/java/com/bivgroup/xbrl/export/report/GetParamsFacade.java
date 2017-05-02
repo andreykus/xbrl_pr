@@ -101,6 +101,17 @@ public class GetParamsFacade {
         prepareProcessor.process(processors, dao, fromDate, toDate);
     }
 
+    /**
+     * create period
+     *
+     * @param dateFrom - from date
+     * @param dateTo -  to date
+     * @param name - name
+     * @return - id period
+     */
+    public Long createPeriod(Date dateFrom, Date dateTo, String name) {
+        return dao.createPeriod(dateFrom, dateTo, name);
+    }
 
     /**
      * Create XBRL report

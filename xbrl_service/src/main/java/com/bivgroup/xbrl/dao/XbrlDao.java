@@ -12,6 +12,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.criteria.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -85,6 +86,23 @@ public class XbrlDao implements Dao {
      */
     public XbrlPeriod getPeriodById(Long id) {
         return entityManager.find(XbrlPeriod.class, id);
+    }
+
+    /**
+     * create period
+     *
+     * @param dateFrom - from date report
+     * @param dateTo - to date report
+     * @param name - name
+     * @return
+     */
+    public Long createPeriod(Date dateFrom, Date dateTo, String name){
+        XbrlPeriod period =  new XbrlPeriod();
+        period.setDateFrom(dateFrom);
+        period.setDateTo(dateTo);
+        period.setName(name);
+        entityManager.persist(period);
+        return period.getId();
     }
 
     /**

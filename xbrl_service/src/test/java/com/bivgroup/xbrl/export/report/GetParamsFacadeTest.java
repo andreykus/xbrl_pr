@@ -66,11 +66,13 @@ public class GetParamsFacadeTest extends AbstractTest {
     @Rule
     public WeldInitiator weld = WeldInitiator.from(GetParamsFacade.class, XbrlDao.class, CreatorXbrlXWand.class, CreatorXbrlFreeMarker.class, EntityManager.class).inject(this).build();
 
+    //report
     @Test
     public void testCreateReport() throws Exception {
         facade.createReport(new ByteArrayOutputStream(), 1001L, 1001L);
     }
 
+    //contacts
     @Test
     public void testCreateContexts() throws Exception {
         facade.createContexts(1001L, 1001L);
@@ -92,9 +94,8 @@ public class GetParamsFacadeTest extends AbstractTest {
         DatabaseOperation.INSERT.execute(con, dataSet);
     }
 
-    public static void main(String[] args)
-    {
-        JUnitCore core= new JUnitCore();
+    public static void main(String[] args) {
+        JUnitCore core = new JUnitCore();
         core.run(GetParamsFacadeTest.class);
     }
 }

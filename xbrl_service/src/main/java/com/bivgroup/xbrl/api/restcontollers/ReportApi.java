@@ -16,6 +16,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -100,6 +101,30 @@ public class ReportApi {
             return Response.serverError().entity(e.getMessage()).build();
         }
         return Response.ok().build();
+    }
+
+    /**
+     * create Period report
+     *
+     * @param response   - xml file
+     * @param idPeriod   - id period
+     * @param name - name
+     * @return -    period
+     * @throws Exception
+     */
+    @GET
+    @Path("/createPeriod")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response getReport(@Context HttpServletResponse response, @FormParam("dateFrom") Date dateFrom , @FormParam("dateTo") Date dateTo,  @FormParam("idPeriod") Date idPeriod, @FormParam("name") String name) throws Exception {
+        Long periodId = null;
+        try {
+            periodId = facade.createPeriod(dateFrom, dateTo, name);
+
+        } catch (Exception e) {
+            logger.error(e, e.getCause());
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return  Response.ok(periodId,MediaType.TEXT_PLAIN).build();
     }
 
 }
